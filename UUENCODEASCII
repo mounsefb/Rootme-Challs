@@ -1,0 +1,44 @@
+#!/bin/bash
+
+encoding_table=(' ' '!' '"' '' '$' '%' '&' "'" '(' ')' '*' '+' ',' '-' '.' '/' '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' ';' '<' '=' '>' '?' '@' 'A' 'B' 'C' 'D' 'E' 'F' 'G' 'H' 'I' 'J' 'K' 'L' 'M' 'N' 'O' 'P' 'Q' 'R' 'S' 'T' 'U' 'V' 'W' 'X' 'Y' 'Z' '[' '\\' ']' '^' '_')
+
+uuenc_to_ascii() {
+    uuenc_input=$1
+    output_dec=()
+    len_in=${#uuenc_input}
+    len_enc=${#encoding_table[@]}
+    for ((i=0; i<len_in; i++))
+    do
+    	j=0
+    	while [[ "$j" -lt "$len_enc" && "${uuenc_input:$i:1}" != "${encoding_table[j]}" ]]
+    	do
+  		((j++))
+    	done
+    	output_dec[$i]=$j
+    done   
+    echo "${output_dec[@]}"
+    output_bit=()
+    for ((i=0; i<${#output_dec[@]}; i++))
+    do
+    	local binary=""
+
+   	if [[ $n -eq 0 ]]; then
+		output_bit[$i]=""
+        else
+        	while [[ $n -gt 0 ]]; do
+   	     		remainder=$((n % 2))
+   	     		binary="${remainder}${binary}"
+   	     		n=$((n / 2))
+   		done
+    	fi
+
+    	
+    done
+}
+
+ #Read input from user
+read -p "Enter uuencadecimal string: " uuenc_string
+
+ #Convert and display ASCII
+ascii_output=$(uuenc_to_ascii "$uuenc_string")
+echo "ASCII Output: $ascii_output"

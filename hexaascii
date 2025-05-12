@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Function to convert hexadecimal to ASCII
+hex_to_ascii() {
+    hex_input=$1
+    # Use xxd to convert hex to ASCII
+    echo "$hex_input" | xxd -r -p
+}
+
+# Read input from user
+read -p "Enter hexadecimal string: " hex_string
+
+# Convert and display ASCII
+ascii_output=$(hex_to_ascii "$hex_string")
+echo "ASCII Output: $ascii_output"
+
