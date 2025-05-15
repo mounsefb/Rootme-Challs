@@ -1,6 +1,6 @@
 cd /tmp
-mkdir caca
-cd caca
+mkdir new_dir
+cd new_dir
 nano ls
 {
 #!/bin/bash
